@@ -128,7 +128,7 @@ return [
 
     'cookie' => env(
         'SESSION_COOKIE',
-        Str::slug(env('APP_NAME', 'Map'), '_').'_session'
+        Str::slug(env('APP_NAME', 'Geo Maps'), '_').'_session'
     ),
 
     /*

@@ -14,7 +14,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes([
-    'register' => false
+    'register' => false,
+    'verify' => true
 ]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', [
+    'uses'  => 'HomeController@index',
+    'as'    => 'home'
+])->middleware('verified', 'password.confirm');
+
+Route::get('/admin/registration', [
+    'uses'  => 'Auth\RegisterController@showRegistrationForm',
+    'as'    => 'registration'
+]);
+
+/* After create dashboard add auth middleware */
+
+Route::post('/admin/registration', [
+    'uses'  => 'Auth\RegisterController@register'
+]);
