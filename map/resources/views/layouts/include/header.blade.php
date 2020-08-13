@@ -19,7 +19,7 @@
             <form>
                 <div class="form-group mb-0">
                     <i class="dw dw-search2 search-icon"></i>
-                    <input type="text" class="form-control search-input" placeholder="Search Here">
+                    <input type="text" class="form-control search-input" placeholder="Search Your Location...">
                     <div class="dropdown">
                         <a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">
                             <i class="ion-arrow-down-c"></i>
@@ -120,14 +120,13 @@
             <div class="dropdown">
                 <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 						<span class="user-icon">
-							<img src="vendors/images/photo1.jpg" alt="">
+							<img src="" alt="">
 						</span>
                     <span class="user-name">{{ auth()->user()->name }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                    <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
-                    <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a>
-                    <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
+                    <a class="dropdown-item" href=""><i class="dw dw-settings2"></i> Setting</a>
+                    <a class="dropdown-item" href=""><i class="dw dw-help"></i> Help</a>
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="dw dw-logout"></i> Log Out</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf

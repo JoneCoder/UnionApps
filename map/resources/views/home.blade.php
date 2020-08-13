@@ -15,7 +15,3 @@
         </div>
     </div>
 @endsection
-
-@section('script')
-    <script src="{{ mix('js/chart.js') }}" defer></script>
-@endsection
