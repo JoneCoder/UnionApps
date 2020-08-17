@@ -27,7 +27,8 @@ mix.scripts([
     'resources/assets/vendors/scripts/core.js',
     'resources/assets/vendors/scripts/script.min.js',
     'resources/assets/vendors/scripts/process.js',
-    'resources/assets/vendors/scripts/layout-settings.js'
+    'resources/assets/vendors/scripts/layout-settings.js',
+    'resources/assets/vendors/scripts/footer.js'
 ], 'public/js/app.js');
 
 //Charts js

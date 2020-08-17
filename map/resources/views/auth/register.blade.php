@@ -1,5 +1,5 @@
-@include('layouts.include.head')
-<body class="login-page">
+@extends('layouts.app')
+@section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -7,7 +7,7 @@
                 <div class="card-header">{{ __('Registration') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('registration') }}">
+                    <form method="POST" action="{{ route('registration') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -20,6 +20,40 @@
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
+                            <div class="col-md-6">
+                                <select class="custom-select @error('gender') is-invalid @enderror" id="gender" name="gender" required>
+                                    <option selected>Choose...</option>
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">Others</option>
+                                </select>
+
+                                @error('gender')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Avatar') }}</label>
+                            <div class="col-md-6">
+                                <div class="custom-file @error('avatar') is-invalid @enderror">
+                                    <input type="file" class="custom-file-input" name="avatar" id="avatar">
+                                    <label class="custom-file-label" for="avatar" aria-describedby="avatar">Choose file</label>
+                                </div>
+
+                                @error('avatar')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                 </span>
                                 @enderror
                             </div>
                         </div>
@@ -73,7 +107,4 @@
         </div>
     </div>
 </div>
-
-@include('layouts.include.script')
-</body>
-</html>
+@endsection

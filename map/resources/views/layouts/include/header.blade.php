@@ -1,13 +1,13 @@
 <body>
 <div class="pre-loader">
     <div class="pre-loader-box">
-        <div class="loader-logo"><img src="{{ asset('images/deskapp-logo.svg') }}" alt=""></div>
+        <div class="loader-logo"><img src="{{ asset('images/geo-maps-logo.svg') }}" alt=""></div>
         <div class='loader-progress' id="progress_div">
             <div class='bar' id='bar1'></div>
         </div>
         <div class='percent' id='percent1'>0%</div>
         <div class="loading-text">
-            লোডিং...
+            Loading...
         </div>
     </div>
 </div>
@@ -120,7 +120,7 @@
             <div class="dropdown">
                 <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 						<span class="user-icon">
-							<img src="" alt="">
+							<img src="{{ asset('images/profile/'.auth()->user()->avatar) }}" alt="">
 						</span>
                     <span class="user-name">{{ auth()->user()->name }}</span>
                 </a>

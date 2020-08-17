@@ -76,8 +76,8 @@
 <div class="left-side-bar">
     <div class="brand-logo">
         <a href="{{ route('home') }}">
-            <img src="{{ asset('images/deskapp-logo.svg') }}" alt="" class="dark-logo">
-            <img src="{{ asset('images/deskapp-logo-white.svg') }}" alt="" class="light-logo">
+            <img src="{{ asset('images/geo-maps-logo.svg') }}" alt="" class="dark-logo">
+            <img src="{{ asset('images/geo-maps-logo-white.svg') }}" alt="" class="light-logo">
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">
             <i class="ion-close-round"></i>
@@ -89,6 +89,65 @@
                 <li>
                     <a href="{{ route('home') }}" class="dropdown-toggle no-arrow">
                         <span class="micon dw dw-pin-1"></span><span class="mtext">Maps</span>
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-pin"></span><span class="mtext">New Location</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="">Division</a></li>
+                        <li><a href="">District</a></li>
+                        <li><a href="">Upazila</a></li>
+                        <li><a href="">Union</a></li>
+                        <li><a href="">Post Office</a></li>
+                        <li><a href="">Village</a></li>
+                        <li><a href="">House</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-map-1"></span><span class="mtext">Update Location</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="">Division</a></li>
+                        <li><a href="">District</a></li>
+                        <li><a href="">Upazila</a></li>
+                        <li><a href="">Union</a></li>
+                        <li><a href="">Post Office</a></li>
+                        <li><a href="">Village</a></li>
+                        <li><a href="">House</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-route"></span><span class="mtext">View Location</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-magnifying-glass"></span><span class="mtext">Search House</span>
+                    </a>
+                </li>
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                    <div class="sidebar-small-cap">Geo Maps</div>
+                </li>
+                <li>
+                    <a href="{{ route('registration') }}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-user-1"></span><span class="mtext">New User</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-help"></span><span class="mtext">Help</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-settings"></span><span class="mtext">Settings</span>
                     </a>
                 </li>
             </ul>
