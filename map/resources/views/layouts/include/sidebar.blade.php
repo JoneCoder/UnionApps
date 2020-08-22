@@ -91,12 +91,15 @@
                         <span class="micon dw dw-pin-1"></span><span class="mtext">Maps</span>
                     </a>
                 </li>
+                @can('NewLocation')
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon dw dw-pin"></span><span class="mtext">New Location</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="">Division</a></li>
+                        @can('AddDivision')
+                        <li><a href="{{ route('divisions') }}">Division</a></li>
+                        @endcan
                         <li><a href="">District</a></li>
                         <li><a href="">Upazila</a></li>
                         <li><a href="">Union</a></li>
@@ -105,6 +108,7 @@
                         <li><a href="">House</a></li>
                     </ul>
                 </li>
+                @endcan
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon dw dw-map-1"></span><span class="mtext">Update Location</span>

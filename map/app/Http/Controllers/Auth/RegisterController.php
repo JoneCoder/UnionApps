@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 class RegisterController extends Controller
 {
@@ -50,11 +51,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'gender' => ['required', 'in:1,2,3'],
-            'avatar' => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name'      => ['required', 'string', 'max:255'],
+            'gender'    => ['required', 'in:1,2,3'],
+            'avatar'    => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
+            'role'      => ['required', 'in:1,2,3,4,5,6,7,8,9'],
+            'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password'  => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -66,12 +68,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'gender' => $data['gender'],
             'avatar' => $data['photo'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        $user->assignRole(Role::findById($data['role']));
+
+        return $user;
     }
 }

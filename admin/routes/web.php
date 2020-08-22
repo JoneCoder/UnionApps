@@ -16,3 +16,22 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => '/union', 'middleware' => ['role:Super Admin', 'auth']], function (){
+    Route::get('/list', [
+        'uses'  => 'Admin\UnionSetupController@showUnion',
+        'as'    => 'admin.unionSetup'
+    ]);
+    Route::get('/setup', [
+        'uses'  => 'Admin\UnionSetupController@showUnionSetupForm',
+        'as'    => 'admin.addUnion'
+    ]);
+    Route::get('/edit', [
+        'uses'  => 'Admin\UnionSetupController@showUnionEditForm',
+        'as'    => 'admin.editUnion'
+    ]);
+    Route::get('/citizen/registration', [
+        'uses'  => 'Admin\UnionSetupController@showUnionEditForm',
+        'as'    => 'admin.citizenRegistration'
+    ]);
+});

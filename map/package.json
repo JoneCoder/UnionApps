@@ -1,5 +1,6 @@
 {
     "private": true,
+    "sideEffects": false,
     "scripts": {
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
@@ -21,5 +22,10 @@
         "sass": "^1.15.2",
         "sass-loader": "^8.0.0",
         "vue-template-compiler": "^2.6.11"
+    },
+    "dependencies": {
+        "datatables.net-bs4": "^1.10.21",
+        "datatables.net-buttons-bs4": "^1.6.3",
+        "yarn": "^1.22.4"
     }
 }

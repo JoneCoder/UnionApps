@@ -1,7 +1,11 @@
 {
     "/css/app.css": "/css/app.css",
-    "/css/icon-font.css": "/css/icon-font.css",
+    "/css/datatables.css": "/css/datatables.css",
+    "/css/switchery.css": "/css/switchery.css",
+    "/css/style.css": "/css/style.css",
     "/js/app.js": "/js/app.js",
     "/js/QRscanner.js": "/js/QRscanner.js",
-    "/js/chart.js": "/js/chart.js"
+    "/js/chart.js": "/js/chart.js",
+    "/js/switchery.js": "/js/switchery.js",
+    "/js/datatables.js": "/js/datatables.js"
 }
