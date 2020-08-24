@@ -26,6 +26,10 @@ Route::group(['prefix' => '/union', 'middleware' => ['role:Super Admin', 'auth']
         'uses'  => 'Admin\UnionSetupController@showUnionSetupForm',
         'as'    => 'admin.addUnion'
     ]);
+    Route::post('/setup', [
+        'uses'  => 'Admin\UnionSetupController@createUnion',
+        'as'    => 'admin.addUnion'
+    ]);
     Route::get('/edit', [
         'uses'  => 'Admin\UnionSetupController@showUnionEditForm',
         'as'    => 'admin.editUnion'

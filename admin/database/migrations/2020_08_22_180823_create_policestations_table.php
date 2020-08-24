@@ -14,7 +14,11 @@ class CreatePolicestationsTable extends Migration
     public function up()
     {
         Schema::create('policestations', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('district_id')->unsigned();
+            $table->foreign('district_id')->references('id')->on('districts');
+            $table->string('name', 25);
+            $table->string('bn_name', 25)->nullable();
             $table->timestamps();
         });
     }
