@@ -437,5 +437,5 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ mix('js/chart.js') }}" defer></script>
+    <script src="{{ asset('src/plugins/apexcharts/apexcharts.min.js') }}" defer></script>
 @endsection

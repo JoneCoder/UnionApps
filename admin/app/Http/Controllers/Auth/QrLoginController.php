@@ -26,7 +26,7 @@ class QrLoginController extends Controller
     protected function attemptLogin($data)
     {
         return $this->guard()->attempt([
-                'username' => $data[1], 'options' => $data[0], 'password' => $data[2]
+                'username' => $data[1], 'password' => $data[2]
         ]);
     }
 

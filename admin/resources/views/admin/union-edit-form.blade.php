@@ -1,6 +1,26 @@
 @extends('layouts.app')
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('assets/css/form_validate.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/styles/form_validate.css') }}">
+    <link rel="stylesheet" href="{{ asset('src/plugins/switchery/switchery.min.css') }}">
+@endsection
+
+@section('breadcrumb')
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="title">
+                    <h4><i class="icon-copy fa fa-cogs" aria-hidden="true"></i> ইউনিয়ন সেটআপ</h4>
+                </div>
+                <nav aria-label="breadcrumb" role="navigation">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">ড্যাশবোর্ড</a></li>
+                        <li class="breadcrumb-item hover" aria-current="page"><a href="{{ route('admin.unionSetup') }}">ইউনিয়ন তালিকা</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">ইউনিয়ন আপডেট</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('content')
@@ -14,27 +34,40 @@
                     </div>
                 </div>
 
-                <form action="" method="post" enctype="multipart/form-data" class="uk-form bt-flabels js-flabels" data-parsley-validate data-parsley-errors-messages-disabled>
+                <form action="{{ route('admin.updateUnion') }}" method="post" enctype="multipart/form-data" class="uk-form bt-flabels js-flabels" data-parsley-validate data-parsley-errors-messages-disabled>
                     @csrf
                     <ul class="profile-edit-list row mt-3">
                         <li class="weight-500 col-md-6">
-                            <div class="form-group bt-flabels__wrapper @error('en_name') has-danger @enderror">
+                            <div class="form-group bt-flabels__wrapper @error('name') has-danger @enderror">
                                 <label class="form-control-label">ইউনিয়নের নাম (ইংরেজিতে) <span>*</span></label>
-                                <input type="text" name="en_name" value="{{ old('en_name')}}" placeholder="ইউনিয়নের পূর্ণ নাম প্রদান করূন" class="form-control form-control-lg @error('en_name') form-control-danger @enderror" autocomplete="en_name" autofocus data-parsley-trigger="keyup" data-parsley-required>
+                                <input type="text" name="name" value="{{ old('name')? old('name') : $union->name}}" placeholder="ইউনিয়নের পূর্ণ নাম প্রদান করূন" class="form-control form-control-lg @error('name') is-invalid @enderror" autocomplete="name" autofocus data-parsley-trigger="keyup" data-parsley-required>
 
                                 <span class="bt-flabels__error-desc">ইউনিয়নের নাম দিন ইংরেজিতে....</span>
-                                @error('en_name')
-                                <div class="form-control-feedback">
-                                    {{ $message }}
-                                </div>
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group bt-flabels__wrapper @error('division_id') has-danger @enderror">
+                                <label for="division" class="form-control-label">বিভাগ <span>*</span></label>
+                                <select name="division_id" onchange="getLocation($(this).val(), 'district')" id="division" class="form-control @error('division_id')is-invalid @enderror">
+                                    <option value="" class="divisions">চিহ্নিত করুন</option>
+                                </select>
+                                <span class="bt-flabels__error-desc">বিভাগ নির্বাচন করুন....</span>
+
+                                @error('division_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
 
                             <div class="form-group bt-flabels__wrapper @error('district_id') has-danger @enderror">
-                                <label for="District-english" class="form-control-label">জেলা <span>*</span></label>
-                                <select onchange="getLocation($(this).val(), null, 'upazila_append', 'upazila_id', null, 3 )" name="district_id" id="district_id" class="custom-select2 form-control @error('district_id')form-control-danger @enderror" style="width: 100%; height: 38px;" data-parsley-required >
-                                    <option value="" class="district_append">চিহ্নিত করুন</option>
-                                    <option value="" selected="selected"></option>
+                                <label for="district" class="form-control-label">জেলা <span>*</span></label>
+                                <select onchange="getLocation($(this).val(), 'upazila')" name="district_id" id="district" class="form-control @error('district_id')is-invalid @enderror">
+                                    <option value="">চিহ্নিত করুন</option>
                                 </select>
                                 <span class="bt-flabels__error-desc">জেলা নির্বাচন করুন....</span>
 
@@ -46,12 +79,11 @@
                             </div>
 
                             <div class="form-group bt-flabels__wrapper @error('upazila_id') has-danger @enderror">
-                                <label for="District-english" class="form-control-label">উপজেলা/থানা <span>*</span></label>
-                                <select onchange="getLocation($(this).val(), null, 'postal_append', 'postal_id', null, 6)" name="upazila_id" id="upazila_id" class="form-control @error('upazila_id')form-control-danger @enderror" data-parsley-required >
-                                    <option value="" id="upazila_append">চিহ্নিত করুন</option>
-                                    <option value="" selected="selected"></option>
+                                <label for="upazila" class="form-control-label">উপজেলা <span>*</span></label>
+                                <select onchange="getLocation($(this).val(), 'union')" name="upazila_id" id="upazila" class="form-control @error('upazila_id')is-invalid @enderror">
+                                    <option value="">চিহ্নিত করুন</option>
                                 </select>
-                                <span class="bt-flabels__error-desc">উপজেলা/থানা নির্বাচন করুন....</span>
+                                <span class="bt-flabels__error-desc">উপজেলা নির্বাচন করুন....</span>
 
                                 @error('upazila_id')
                                 <span class="invalid-feedback" role="alert">
@@ -60,127 +92,151 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group bt-flabels__wrapper @error('postal_id') has-danger @enderror">
-                                <label for="District-english" class="form-control-label">পোস্ট অফিস <span>*</span></label>
-                                <select name="postal_id" id="postal_id" class="form-control @error('postal_id')form-control-danger @enderror"  data-parsley-required>
-                                    <option value="" id="postal_append">চিহ্নিত করুন</option>
-                                    <option value="" selected="selected"></option>
+                            <div class="form-group bt-flabels__wrapper @error('policestation_id') has-danger @enderror">
+                                <label for="policestation" class="form-control-label">থানা <span>*</span></label>
+                                <select onchange="getLocation($(this).val(), 'postoffice')" name="policestation_id" id="policestation" class="form-control @error('policestation_id')is-invalid @enderror">
+                                    <option value="">চিহ্নিত করুন</option>
                                 </select>
-                                <span class="bt-flabels__error-desc">পোস্ট অফিস নির্বাচন করুন....</span>
+                                <span class="bt-flabels__error-desc">থানা নির্বাচন করুন....</span>
 
-                                @error('postal_id')
+                                @error('policestation_id')
                                 <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                 @enderror
                             </div>
 
-                            <div class="form-group bt-flabels__wrapper @error('postal_code') has-danger @enderror">
-                                <label class="form-control-label">পোস্টাল কোড </label>
-                                <input type="text" name="postal_code" value="" placeholder="1010101" class="form-control form-control-lg @error('postal_code') form-control-danger @enderror" autocomplete="postal_code" autofocus data-parsley-type="number" data-parsley-trigger="keyup" >
+                            <div class="form-group bt-flabels__wrapper @error('postoffice_id') has-danger @enderror">
+                                <label for="postoffice" class="form-control-label">পোস্ট অফিস <span>*</span></label>
+                                <select name="postoffice_id" id="postoffice" class="form-control @error('postoffice_id') is-invalid @enderror">
+                                    <option value="">চিহ্নিত করুন</option>
+                                </select>
+                                <span class="bt-flabels__error-desc">পোস্ট অফিস নির্বাচন করুন....</span>
 
-                                <span class="bt-flabels__error-desc">অনুগ্রহ করে পোস্টাল কোড দিন....</span>
-                                @error('postal_code')
-                                <div class="form-control-feedback">
-                                    {{ $message }}
-                                </div>
+                                @error('postoffice_id')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                 @enderror
                             </div>
 
                             <div class="row mt-2">
                                 <div class="col-md-12">
-                                    <div class="form-group @error('main_logo') has-danger @enderror">
+                                    <div class="form-group d-flex align-items-center">
+                                        <div class="mr-1">
+                                            <img src="{{ asset('images/union/'. $union->main_logo) }}" width="100">
+                                        </div>
                                         <div class="custom-file">
-                                            <input id="mainLogo" accept="image/png" name="main_logo" type="file" class="custom-file-input" onchange="main_load(event)">
-                                            <label for="mainLogo" id="mainLogoLabel" class="custom-file-label" style="cursor: pointer;">মেইন লোগো সিলেক্ট করুন</label>
+                                            <input id="mainLogo" accept="image/png" name="main_logo" type="file" class="custom-file-input @error('main_logo') is-invalid @enderror">
+                                            <label for="mainLogo" id="mainLogoLabel" class="custom-file-label" style="cursor: pointer;">@error('main_logo') {{ $message }} @else মেইন লোগো সিলেক্ট করুন @enderror</label>
                                         </div>
-                                        @error('main_logo')
-                                        <div class="form-control-feedback">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
                                     </div>
+                                    @error('main_logo')
+                                    <span class="has-danger" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="row mt-2">
                                 <div class="col-md-12">
-                                    <div class="form-group @error('brand_logo') has-danger @enderror">
+                                    <div class="form-group d-flex align-items-center">
+                                        <div class="mr-1">
+                                            <img src="{{ asset('images/union/'. $union->brand_logo) }}" width="100">
+                                        </div>
                                         <div class="custom-file" style="cursor: pointer;">
-                                            <input id="brandLogo" accept="image/png" name="brand_logo" type="file" onchange="brand_load(event)" class="custom-file-input">
-                                            <label for="brandLogo" id="brandLogoLabel" class="custom-file-label" style="cursor: pointer;">ব্র্যান্ড লোগো সিলেক্ট করুন</label>
+                                            <input id="brandLogo" accept="image/png" name="brand_logo" type="file" class="custom-file-input @error('brand_logo') is-invalid @enderror">
+                                            <label for="brandLogo" id="brandLogoLabel" class="custom-file-label" style="cursor: pointer;">@error('brand_logo') {{ $message }} @else ব্র্যান্ড লোগো সিলেক্ট করুন @enderror</label>
                                         </div>
-                                        @error('brand_logo')
-                                        <div class="form-control-feedback">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
                                     </div>
+                                    @error('brand_logo')
+                                    <span class="has-danger" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="row mt-2">
                                 <div class="col-md-12">
-                                    <div class="form-group @error('jolchap') has-danger @enderror">
+                                    <div class="form-group d-flex align-items-center">
+                                        <div class="mr-1">
+                                            <img src="{{ asset('images/union/'. $union->jolchap) }}" width="100">
+                                        </div>
                                         <div class="custom-file">
-                                            <input id="jolchap" accept="image/png" name="jolchap" type="file" onchange="jolchap_load(event)" class="custom-file-input">
-                                            <label for="jolchap" id="jolchapLabel" class="custom-file-label" style="cursor: pointer;">জলছাপ সিলেক্ট করুন</label>
+                                            <input id="jolchap" accept="image/png" name="jolchap" type="file" class="custom-file-input @error('jolchap') is-invalid @enderror">
+                                            <label for="jolchap" id="jolchapLabel" class="custom-file-label" style="cursor: pointer;">@error('jolchap') {{ $message }} @else জলছাপ সিলেক্ট করুন @enderror</label>
                                         </div>
-                                        @error('jolchap')
-                                        <div class="form-control-feedback">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
                                     </div>
+                                    @error('jolchap')
+                                    <span class="has-danger" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                         </li>
                         <li class="weight-500 col-md-6">
                             <div class="form-group bt-flabels__wrapper @error('bn_name') has-danger @enderror">
                                 <label class="form-control-label">ইউনিয়নের নাম (বাংলায়) <span>*</span></label>
-                                <input type="text" name="bn_name" value="" placeholder="ইউনিয়নের পূর্ণ নাম প্রদান করূন" class="form-control form-control-lg @error('bn_name') form-control-danger @enderror" autocomplete="bn_name" autofocus data-parsley-trigger="keyup" data-parsley-required>
+                                <input type="text" name="bn_name" value="{{ old('bn_name')? old('bn_name') : $union->bn_name }}" placeholder="ইউনিয়নের পূর্ণ নাম প্রদান করূন" class="form-control form-control-lg @error('bn_name') is-invalid @enderror" autocomplete="bn_name" autofocus data-parsley-trigger="keyup" data-parsley-required>
 
                                 <span class="bt-flabels__error-desc">ইউনিয়নের নাম দিন বাংলায়....</span>
                                 @error('bn_name')
-                                <div class="form-control-feedback">
-                                    {{ $message }}
-                                </div>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
 
-                            <div class="form-group bt-flabels__wrapper @error('union_code') has-danger @enderror">
-                                <label class="form-control-label">ইউনিয়ন কোড <span>*</span></label>
-                                <input type="text" name="union_code" value="" placeholder="ইউনিয়ন কোড প্রদান করূন" class="form-control @error('union_code') form-control-danger @enderror" autocomplete="union_code" autofocus data-parsley-maxlength="15" data-parsley-type="number" data-parsley-trigger="keyup" data-parsley-required>
+                            <div class="form-group bt-flabels__wrapper @error('union_id') has-danger @enderror">
+                                <label for="union" class="form-control-label">ইউনিয়ন <span>*</span></label>
+                                <select name="union_id" id="union" class="form-control @error('union_id')is-invalid @enderror">
+                                    <option value="">চিহ্নিত করুন</option>
+                                </select>
+                                <span class="bt-flabels__error-desc">ইউনিয়ন নির্বাচন করুন....</span>
+
+                                @error('union_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group bt-flabels__wrapper @error('code') has-danger @enderror">
+                                <label for="code" class="form-control-label">ইউনিয়ন কোড <span>*</span></label>
+                                <input type="text" name="code" value="{{ old('code')? old('code') : $union->code }}" placeholder="ইউনিয়ন কোড প্রদান করূন" class="form-control @error('code') is-invalid @enderror" autocomplete="code" autofocus data-parsley-maxlength="4" data-parsley-type="number" data-parsley-trigger="keyup" data-parsley-required>
 
                                 <span class="bt-flabels__error-desc">ইউনিয়ন কোড দিন....</span>
-                                @error('union_code')
-                                <div class="form-control-feedback">
-                                    {{ $message }}
-                                </div>
+                                @error('code')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
 
-                            <div class="form-group bt-flabels__wrapper @error('sub_domain') has-danger @enderror">
-                                <label class="form-control-label">সাব-ডোমেইন <span>*</span></label>
-                                <input type="text" name="sub_domain" value="" placeholder="সাব-ডোমেইন প্রদান করুন" class="form-control form-control-lg @error('sub_domain') form-control-danger @enderror" autocomplete="sub_domain" autofocus data-parsley-pattern='^[a-zA-Z. (),:;_]+$' data-parsley-trigger="keyup" data-parsley-required>
+                            <div class="form-group bt-flabels__wrapper @error('subdomain') has-danger @enderror">
+                                <label for="subdomain" class="form-control-label">সাব-ডোমেইন <span>*</span></label>
+                                <input type="text" name="subdomain" value="{{ old('subdomain')? old('subdomain') : $union->subdomain }}" placeholder="সাব-ডোমেইন প্রদান করুন" class="form-control form-control-lg @error('subdomain') is-invalid @enderror" autocomplete="subdomain" autofocus data-parsley-pattern='^[a-zA-Z. (),:;_]+$' data-parsley-trigger="keyup" data-parsley-required>
 
                                 <span class="bt-flabels__error-desc">সাব-ডোমেইন দিন ইংরেজিতে....</span>
-                                @error('sub_domain')
-                                <div class="form-control-feedback">
-                                    {{ $message }}
-                                </div>
+                                @error('subdomain')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
 
-                            <div class="form-group bt-flabels__wrapper @error('village_bn') has-danger @enderror">
-                                <label class="form-control-label">গ্রাম/মহল্লা (বাংলায়) </label>
-                                <input type="text" name="village_bn" value="" placeholder="গ্রাম/মহল্লা নাম দিন" class="form-control form-control-lg @error('village_bn') form-control-danger @enderror" autocomplete="village_bn" autofocus data-parsley-trigger="keyup" >
+                            <div class="form-group bt-flabels__wrapper @error('village') has-danger @enderror">
+                                <label for="village" class="form-control-label">গ্রাম/মহল্লা (বাংলায়) </label>
+                                <input type="text" name="village" value="{{ old('village')? old('village') : $union->village }}" placeholder="গ্রাম/মহল্লা নাম দিন" class="form-control form-control-lg @error('village') is-invalid @enderror" autocomplete="village" autofocus data-parsley-trigger="keyup" data-parsley-required>
 
                                 <span class="bt-flabels__error-desc">গ্রাম/মহল্লা নাম দিন বাংলায়....</span>
-                                @error('village_bn')
-                                <div class="form-control-feedback">
-                                    {{ $message }}
-                                </div>
+                                @error('village')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
 
@@ -188,13 +244,13 @@
 
                             <div class="form-group bt-flabels__wrapper @error('mobile') has-danger @enderror">
                                 <label class="form-control-label">মোবাইল </label>
-                                <input type="text" name="mobile" value="" placeholder="মোবাইল নম্বর  প্রদান করূন" class="form-control @error('mobile') form-control-danger @enderror" autocomplete="mobile" autofocus data-parsley-maxlength="11" data-parsley-type="number" data-parsley-trigger="keyup">
+                                <input type="text" name="mobile" value="{{ old('mobile')? old('mobile') : $union->mobile }}" placeholder="মোবাইল নম্বর  প্রদান করূন" class="form-control @error('mobile') is-invalid @enderror" autocomplete="mobile" autofocus data-parsley-maxlength="11" data-parsley-type="number" data-parsley-trigger="keyup" data-parsley-required>
 
                                 <span class="bt-flabels__error-desc">১১ ডিজিটের মোবাইল নম্বর দিন....</span>
                                 @error('mobile')
-                                <div class="form-control-feedback">
-                                    {{ $message }}
-                                </div>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
 
@@ -202,19 +258,19 @@
 
                             <div class="form-group bt-flabels__wrapper @error('email') has-danger @enderror">
                                 <label class="form-control-label">ইমেল</label>
-                                <input type="email" name="email" value="" placeholder="example@gmail.com" class="form-control @error('email') form-control-danger @enderror" autocomplete="email" autofocus data-parsley-type="email" data-parsley-trigger="keyup">
+                                <input type="email" name="email" value="{{ old('email')? old('email') : $union->email }}" placeholder="example@gmail.com" class="form-control @error('email') is-invalid @enderror" autocomplete="email" autofocus data-parsley-type="email" data-parsley-trigger="keyup">
 
                                 <span class="bt-flabels__error-desc">অনুগ্রহ করে ভ্যালিড ই-মেইল দিন....</span>
                                 @error('email')
-                                <div class="form-control-feedback">
-                                    {{ $message }}
-                                </div>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
 
                             <div class="form-group">
-                                <label class="form-control-label"><i class="icon-copy fa fa-arrow-right" aria-hidden="true"></i> সনদসমুহ প্যাড -এ প্রিন্ট হবে</label>
-                                <input type="checkbox"  name="is_header_active" class="switch-btn" data-size="large" data-color="#0059b2">
+                                <label for="print" class="form-control-label"><i class="icon-copy fa fa-arrow-right" aria-hidden="true"></i> সনদসমুহ প্যাড -এ প্রিন্ট হবে</label>
+                                <input type="checkbox" value="1" id="print"  name="print" class="switch-btn" data-size="large" data-color="#0059b2" {{ old('print')? 'checked' : (($union->print == 1)? 'checked' : '')}}>
                             </div>
 
                             <div class="form-group">
@@ -223,28 +279,36 @@
                         </li>
                     </ul>
                     <div class="col-md-12">
-                        <textarea class="textarea_editor form-control border-radius-0" name="about" placeholder="ইউনিয়ন পরিষদ সম্পর্কে লিখুন...."></textarea>
+                        <textarea class="textarea_editor form-control border-radius-0 @error('about') is-invalid @enderror" name="about" placeholder="ইউনিয়ন পরিষদ সম্পর্কে লিখুন....">{{ old('about')? old('about') : $union->about }}</textarea>
+
+                        @error('about')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
 
                     <div class="col-md-12 mt-3">
-                        <div class="form-group bt-flabels__wrapper @error('google_map') has-danger @enderror">
-                            <textarea class="form-control @error('google_map') form-control-danger @enderror" placeholder="গুগল ম্যাপ কী ফ্রেম দিন...." name="google_map" id="googleMap"></textarea>
+                        <div class="form-group bt-flabels__wrapper @error('map') has-danger @enderror">
+                            <textarea class="form-control @error('map') is-invalid @enderror" placeholder="গুগল ম্যাপ কী ফ্রেম দিন...." name="map" id="googleMap">{{ old('map')}}</textarea>
 
-                            @error('google_map')
-                            <div class="form-control-feedback">
-                                {{ $message }}
-                            </div>
+                            <span class="bt-flabels__error-desc">অনুগ্রহ করে ভ্যালিড গুগল ম্যাপ কী ফ্রেম দিন....</span>
+                            @error('map')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
                             @enderror
                         </div>
                     </div>
 
-                    <div class="col-md-12 border border-radius-4 p-0" id="map">
+                    <div class="col-auto border border-radius-4 p-0 min-height-200px" id="showMap">
                         @php
-                            //echo $data->google_map;
+                            echo $union->map
                         @endphp
                     </div>
                     <div class="col-md-12 text-center">
-                        <button type="submit" class="btn btn-primary">দাখিল করুন</button>
+                        <input type="hidden" name="id" value="{{ $union->id }}">
+                        <button type="submit" class="btn btn-primary mt-3 mb-3">দাখিল করুন</button>
                     </div>
                 </form>
             </div>
@@ -254,6 +318,33 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('assets/js/parsley.js') }}"></script>
-    <script src="{{ asset('assets/js/parsley_validate.js') }}"></script>
+    <script src="{{ asset('vendor/scripts/parsley.js') }}"></script>
+    <script src="{{ asset('vendor/scripts/parsley_validate.js') }}"></script>
+    <script src="{{ asset('src/plugins/switchery/switchery.min.js') }}"></script>
+    <script src="{{ asset('vendor/scripts/geocode/locations.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Switchery
+            var elems = Array.prototype.slice.call(document.querySelectorAll('.switch-btn'));
+            $('.switch-btn').each(function () {
+                new Switchery($(this)[0], $(this).data());
+            });
+
+            $('#mainLogo').change(function () {
+                let data = $(this)[0].files[0].name;
+                $('#mainLogoLabel').text(data);
+            });
+
+            $('#brandLogo').change(function () {
+                let data = $(this)[0].files[0].name;
+                $('#brandLogoLabel').text(data);
+            });
+
+            $('#jolchap').change(function () {
+                let data = $(this)[0].files[0].name;
+                $('#jolchapLabel').text(data);
+            });
+        })
+    </script>
 @endsection

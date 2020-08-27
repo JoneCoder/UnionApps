@@ -1,11 +1,26 @@
 @extends('layouts.app')
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('css/form_validate.css') }}">
-    <link rel="stylesheet" href="{{ mix('css/switchery.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/styles/form_validate.css') }}">
+    <link rel="stylesheet" href="{{ asset('src/plugins/switchery/switchery.min.css') }}">
 @endsection
 
 @section('breadcrumb')
-    <h4><i class="icon-copy fa fa-cogs" aria-hidden="true"></i> ইউনিয়ন সেটআপ</h4>
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="title">
+                    <h4><i class="icon-copy fa fa-cogs" aria-hidden="true"></i> ইউনিয়ন সেটআপ</h4>
+                </div>
+                <nav aria-label="breadcrumb" role="navigation">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">ড্যাশবোর্ড</a></li>
+                        <li class="breadcrumb-item hover" aria-current="page"><a href="{{ route('admin.unionSetup') }}">ইউনিয়ন তালিকা</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">সেটআপ</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('content')
@@ -156,8 +171,13 @@
                                     <div class="form-group">
                                         <div class="custom-file">
                                             <input id="jolchap" accept="image/png" name="jolchap" type="file" class="custom-file-input @error('jolchap') is-invalid @enderror">
-                                            <label for="jolchap" id="jolchapLabel" class="custom-file-label" style="cursor: pointer;">@error('jolchap') {{ $message }} @else জলছাপ সিলেক্ট করুন @enderror</label>
+                                            <label for="jolchap" id="jolchap" class="custom-file-label" style="cursor: pointer;">@error('jolchap') {{ $message }} @else জলছাপ সিলেক্ট করুন @enderror</label>
                                         </div>
+                                        @error('jolchap')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -284,10 +304,10 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/parsley.js') }}"></script>
-    <script src="{{ asset('js/parsley_validate.js') }}"></script>
-    <script src="{{ mix('js/switchery.js') }}"></script>
-    <script src="{{ asset('js/geocode/locations.js') }}"></script>
+    <script src="{{ asset('vendor/scripts/parsley.js') }}"></script>
+    <script src="{{ asset('vendor/scripts/parsley_validate.js') }}"></script>
+    <script src="{{ asset('src/plugins/switchery/switchery.min.js') }}"></script>
+    <script src="{{ asset('vendor/scripts/geocode/locations.js') }}"></script>
 
     <script>
         $(document).ready(function() {

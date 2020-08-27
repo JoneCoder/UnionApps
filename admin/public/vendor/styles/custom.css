@@ -1,0 +1,46 @@
+.header-middle{
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+.header-middle .union-icon{
+    width: 52px;
+    height: 52px;
+    font-size: 24px;
+    background: #ebeff3;
+    color: #1b00ff;
+    line-height: 52px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 100%;
+}
+.header-middle .union-name{
+    font-weight: 600;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+    color: #131e22;
+    font-family: 'Inter',sans-serif;
+    font-size: 20px;
+}
+.header-middle .union-name .upazila-name{
+    display: block;
+    font-weight: 500;
+    color: #131e22;
+    font-family: 'Inter',sans-serif;
+    font-size: 20px;
+}
+.header-middle .union-icon img{
+    border-radius: 100%;
+}
+.header-dark .header .union-name, .header-dark .header .upazila-name{
+    color: #fff;
+}
+.union-background{
+    background: url(../../images/background/template.jpg) no-repeat #fffef2;
+    background-position: center center;
+    background-size: 100% 100%;
+}

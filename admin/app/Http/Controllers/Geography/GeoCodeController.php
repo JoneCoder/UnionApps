@@ -14,9 +14,15 @@ use Illuminate\Http\Request;
 class GeoCodeController extends Controller
 {
     protected $res, $resPS;
-    public  function geoInit()
+    public  function geoDivisionInit()
     {
         $this->res = Division::get();
+        return response()->json($this->res);
+    }
+
+    public  function geoDistrictInit()
+    {
+        $this->res = District::getDistricts();
         return response()->json($this->res);
     }
 
@@ -30,10 +36,12 @@ class GeoCodeController extends Controller
             $this->res = Upazila::get($request);
             $this->resPS = Policestation::get($request);
             return response()->json([$this->resPS, $this->res]);
-        }elseif ($request->type == 'union'){
+        }
+        elseif ($request->type == 'union'){
             $this->res = Union::get($request);
             return response()->json($this->res);
-        }elseif ($request->type == 'postoffice'){
+        }
+        elseif ($request->type == 'postoffice'){
             $this->res = Postoffice::get($request);
             return response()->json($this->res);
         }

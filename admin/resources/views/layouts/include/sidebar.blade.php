@@ -76,8 +76,8 @@
 <div class="left-side-bar">
     <div class="brand-logo">
         <a href="{{ route('home') }}">
-            <img src="{{ asset('images/logo.png') }}" alt="" class="dark-logo">
-            <img src="{{ asset('images/logo-white.png') }}" alt="" class="light-logo">
+            <img src="{{ asset('images/logo.svg') }}" alt="" class="dark-logo">
+            <img src="{{ asset('images/logo-white.svg') }}" alt="" class="light-logo">
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">
             <i class="ion-close-round"></i>
@@ -331,22 +331,15 @@
                     <li>
                         <div class="sidebar-small-cap">সেটিং</div>
                     </li>
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle">
-                            <i class="micon fa fa-gear" aria-hidden="true"></i><span class="mtext">সেটিং</span>
+                    <li>
+                        <a href="{{ route('union.unionProfile') }}" class="dropdown-toggle no-arrow">
+                            <i class="micon fa fa-cogs" aria-hidden="true"></i><span class="mtext">ইউনিয়ন প্রোফাইল সেটআপ</span>
                         </a>
-                        <ul class="submenu">
-                                <li class="dropdown">
-                                    <a href="" class="dropdown-toggle no-arrow">
-                                        <i class="micon fa fa-cogs" aria-hidden="true"></i><span class="mtext">ইউনিয়ন সেটআপ</span>
-                                    </a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="" class="dropdown-toggle no-arrow">
-                                        <i class="micon fa fa-cogs" aria-hidden="true"></i><span class="mtext">রোল সেটআপ</span>
-                                    </a>
-                                </li>
-                        </ul>
+                    </li>
+                    <li>
+                        <a href="" class="dropdown-toggle no-arrow">
+                            <i class="micon fa fa-cogs" aria-hidden="true"></i><span class="mtext">রোল সেটআপ</span>
+                        </a>
                     </li>
             </ul>
         </div>

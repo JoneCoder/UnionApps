@@ -14,11 +14,11 @@
         </span>
         @else
         <span class="union-icon">
-            <img src="{{ asset('images/union.png') }}" class="" alt="">
+            <img src="{{ asset('images/union/'.Auth::User()->union->main_logo) }}" class="" alt="">
         </span>
         <span class="union-name">
-            জয়কৃষ্ণপুর ইউনিয়ন পরিষদ
-            <span class="upazila-name">নবাবগঞ্জ, ঢাকা</span>
+            {{ Auth::User()->union->bn_name }}
+            <span class="upazila-name">{{ Auth::User()->upazila->bn_name }}, {{ Auth::User()->district->bn_name }}</span>
         </span>
         @endrole
     </div>
@@ -95,9 +95,9 @@
                     <span class="user-name">{{ auth()->user()->username }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                    <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> প্রোফাইল</a>
-                    <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> সেটিং</a>
-                    <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> হেল্প</a>
+                    <a class="dropdown-item" href=""><i class="dw dw-user1"></i> প্রোফাইল</a>
+                    <a class="dropdown-item" href=""><i class="dw dw-settings2"></i> সেটিং</a>
+                    <a class="dropdown-item" href=""><i class="dw dw-help"></i> হেল্প</a>
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="dw dw-logout"></i> লগ আউট</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf

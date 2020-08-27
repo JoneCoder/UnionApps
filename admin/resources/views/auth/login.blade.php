@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6 col-lg-7">
-                <img src="{{ asset('images/login-page-img.png') }}" alt="">
+                <img src="{{ asset('vendor/images/login-page-img.png') }}" alt="">
             </div>
             <div class="col-md-6 col-lg-5">
                 <div class="login-box bg-white box-shadow border-radius-10">
@@ -13,31 +13,6 @@
                     </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-                        <div class="select-role">
-                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn">
-                                    <input type="radio" name="options" value="admin" id="admin" {{ (old('options') && old('options') == 'admin') ? 'checked' : '' }}>
-                                    <div class="icon"><img src="{{ asset('images/briefcase.svg') }}" class="svg" alt=""></div>
-                                    <span>I'm</span>
-                                    Software Manager
-                                </label>
-                                <label class="btn">
-                                    <input type="radio" name="options" value="user" id="user" {{ (old('options') && old('options') == 'user') ? 'checked' : '' }}>
-                                    <div class="icon"><img src="{{ asset('images/person.svg') }}" class="svg" alt=""></div>
-                                    <span>I'm</span>
-                                    Union Admin
-                                </label>
-                            </div>
-
-                            @error('options')
-                            <div class="alert alert-danger alert-dismissible fade show mt-1" role="alert">
-                                <strong>{{ $message }}</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            @enderror
-                        </div>
                         <div class="input-group custom">
                             <input type="text" class="form-control form-control-lg @error('username') is-invalid @enderror" placeholder="Username" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
 
@@ -130,6 +105,6 @@
 </div>
 
 @include('layouts.include.script')
-<script src="{{ mix('js/QRscanner.js') }}" defer></script>
+<script src="{{ asset('vendor/scripts/QRscanner.js') }}" defer></script>
 </body>
 </html>
