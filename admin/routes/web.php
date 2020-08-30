@@ -60,4 +60,34 @@ Route::group(['prefix' => '/union', 'middleware' => ['auth']], function (){
         'uses'  => 'Settings\Union\UnionProfileController@update',
         'as'    => 'union.update'
     ]);
+    Route::get('/slider', [
+        'uses'  => 'Settings\Union\UnionSliderController@index',
+        'as'    => 'union.slider'
+    ]);
+    Route::post('/slider', [
+        'uses'  => 'Settings\Union\UnionSliderController@store',
+        'as'    => 'union.addSlide'
+    ]);
+    Route::post('/slider/get', [
+        'uses'  => 'Settings\Union\UnionSliderController@getSlide'
+    ]);
+    Route::post('/slider/update', [
+        'uses'  => 'Settings\Union\UnionSliderController@updateSlide',
+        'as'    => 'union.updateSlide'
+    ]);
+    Route::post('/slider/sequence', [
+        'uses'  => 'Settings\Union\UnionSliderController@updateSequence'
+    ]);
+    Route::get('/slider/status/{id}', [
+        'uses'  => 'Settings\Union\UnionSliderController@updateStatus',
+        'as'    => 'union.changeSliderStatus'
+    ]);
+    Route::post('/slider/delete', [
+        'uses'  => 'Settings\Union\UnionSliderController@deleteSlide',
+        'as'    => 'union.deleteSlide'
+    ]);
+    Route::get('/committee', [
+        'uses'  => 'Settings\Union\UnionCommitteeController@index',
+        'as'    => 'union.committee'
+    ]);
 });

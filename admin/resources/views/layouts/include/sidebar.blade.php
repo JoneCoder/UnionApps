@@ -97,239 +97,331 @@
                         <i class="micon fa fa-cogs" aria-hidden="true"></i><span class="mtext">ইউনিয়ন সেটআপ</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('admin.citizenRegistration') }}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-add-user"></span><span class="mtext">নাগরিক রেজিস্ট্রেশন</span>
+                    </a>
+                </li>
                 <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle">
                         <span class="micon dw dw-add-user"></span><span class="mtext">রেজিস্ট্রেশন</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="">আবেদন করুন</a></li>
-                        <li><a href=""> আবেদনকারিগন</a></li>
-                        <li><a href="">সনদ গ্রহন কারিগণ</a></li>
+                        <li><a href="">সাধারণ হোল্ডিং</a></li>
+                        <li><a href="">বাণিজ্যিক হোল্ডিং</a></li>
+                        <li><a href="">ব্যবসায়িক হোল্ডিং</a></li>
                     </ul>
                 </li>
                 @else
 
                     <li class="dropdown">
                         <a href="javascript:void(0);" class="dropdown-toggle">
-                            <span class="micon dw dw-user"></span><span class="mtext">নাগরিক ব্যবস্থাপনা</span>
+                            <span class="micon dw dw-add-user"></span><span class="mtext">রেজিস্ট্রেশন</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="">আবেদন করুন</a></li>
-                            <li><a href=""> আবেদনকারিগন</a></li>
-                            <li><a href="">সনদ গ্রহন কারিগণ</a></li>
+                            <li><a href="">সাধারণ হোল্ডিং</a></li>
+                            <li><a href="">বাণিজ্যিক হোল্ডিং</a></li>
+                            <li><a href="">ব্যবসায়িক হোল্ডিং</a></li>
                         </ul>
                     </li>
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle">
+                            <i class="micon dw dw-certificate-1"></i><span class="mtext">সনদপত্র সমূহ</span>
+                        </a>
+                        <ul class="submenu">
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle">
+                                    <span class="micon dw dw-user"></span><span class="mtext">নাগরিক ব্যবস্থাপনা</span>
+                                </a>
+                                <ul class="submenu child">
+                                    <li><a href="">আবেদন করুন</a></li>
+                                    <li><a href=""> আবেদনকারিগন</a></li>
+                                    <li><a href="">সনদ গ্রহন কারিগণ</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle">
+                                    <span class="micon dw dw-certificate"></span><span class="mtext">ট্রেড লাইসেন্স ব্যবস্থাপনা</span>
+                                </a>
+                                <ul class="submenu child">
+                                    <li><a href="">আবেদন করুন</a></li>
+                                    <li><a href=""> আবেদনকারিগন</a></li>
+                                    <li><a href="">সনদ গ্রহন কারিগণ</a></li>
+
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle">
+                                    <span class="micon dw dw-user-1"></span><span class="mtext">ওয়ারিশ ব্যবস্থাপনা</span>
+                                </a>
+                                <ul class="submenu child">
+                                    <li><a href="">আবেদন করুন</a></li>
+                                    <li><a href=""> আবেদনকারিগন</a></li>
+                                    <li><a href="">সনদ গ্রহন কারিগণ</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle">
+                                    <span class="micon fa fa-male"></span><span class="mtext">পারিবারিক ব্যবস্থাপনা</span>
+                                </a>
+                                <ul class="submenu child">
+                                    <li><a href="">আবেদন করুন</a></li>
+                                    <li><a href=""> আবেদনকারিগন</a></li>
+                                    <li><a href="">সনদ গ্রহন কারিগণ</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle">
+                                    <span class="micon fa fa-list"></span><span class="mtext">অন্যান্য সনদ</span>
+                                </a>
+                                <ul class="submenu child">
 
 
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);" class="dropdown-toggle">
+                                            <span class="micon fa fa-file-text-o"></span><span class="mtext">চারিত্রিক সনদ</span>
+                                        </a>
+                                        <ul class="submenu child">
+                                            <li><a href="">আবেদন করুন</a></li>
+                                            <li><a href="">আবেদনকারীগন</a></li>
+                                            <li><a href="">সনদ গ্রহন কারিগণ</a></li>
+
+                                        </ul>
+                                    </li>
+
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);" class="dropdown-toggle">
+                                            <span class="micon fa fa-file-text-o"></span><span class="mtext">মৃত্যু সনদ</span>
+                                        </a>
+                                        <ul class="submenu child">
+                                            <li><a href="">আবেদন করুন</a></li>
+                                            <li><a href="">আবেদনকারীগন</a></li>
+                                            <li><a href="">সনদ গ্রহন কারিগণ</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);" class="dropdown-toggle">
+                                            <span class="micon fa fa-file-text-o"></span><span class="mtext">অবিবাহিত সনদ</span>
+                                        </a>
+                                        <ul class="submenu child">
+                                            <li><a href="">আবেদন করুন</a></li>
+                                            <li><a href="">আবেদনকারীগন</a></li>
+                                            <li><a href="">সনদ গ্রহন কারিগণ</a></li>
+                                        </ul>
+                                    </li>
+
+
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);" class="dropdown-toggle">
+                                            <span class="micon fa fa-file-text-o"></span><span class="mtext">বিবাহিত সনদ</span>
+                                        </a>
+                                        <ul class="submenu child">
+                                            <li><a href="">আবেদন করুন</a></li>
+                                            <li><a href="">আবেদনকারীগন</a></li>
+                                            <li><a href="">সনদ গ্রহন কারিগণ</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);" class="dropdown-toggle">
+                                            <span class="micon fa fa-file-text-o"></span><span class="mtext">পুনঃ বিবাহ না হওয়া</span>
+                                        </a>
+                                        <ul class="submenu child">
+                                            <li><a href="">আবেদন করুন</a></li>
+                                            <li><a href="">আবেদনকারীগন</a></li>
+                                            <li><a href="">সনদ গ্রহন কারিগণ</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);" class="dropdown-toggle">
+                                            <span class="micon fa fa-file-text-o"></span><span class="mtext">সনাতন ধর্ম অবলম্বি</span>
+                                        </a>
+                                        <ul class="submenu child">
+                                            <li><a href="">আবেদন করুন</a></li>
+                                            <li><a href="">আবেদনকারীগন</a></li>
+                                            <li><a href="">সনদ গ্রহন কারিগণ</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);" class="dropdown-toggle">
+                                            <span class="micon fa fa-file-text-o"></span><span class="mtext">প্রত্যয়ন</span>
+                                        </a>
+                                        <ul class="submenu child">
+                                            <li><a href="">আবেদন করুন</a></li>
+                                            <li><a href="">আবেদনকারীগন</a></li>
+                                            <li><a href="">সনদ গ্রহন কারিগণ</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);" class="dropdown-toggle">
+                                            <span class="micon fa fa-file-text-o"></span><span class="mtext">ভূমিহীন সনদ</span>
+                                        </a>
+                                        <ul class="submenu child">
+                                            <li><a href="">আবেদন করুন</a></li>
+                                            <li><a href="">আবেদনকারীগন</a></li>
+                                            <li><a href="">সনদ গ্রহন কারিগণ</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);" class="dropdown-toggle">
+                                            <span class="micon fa fa-file-text-o"></span><span class="mtext">প্রকৃত বাকঁ ও শ্রবন প্রতিবন্ধী</span>
+                                        </a>
+                                        <ul class="submenu child">
+                                            <li><a href="">আবেদন করুন</a></li>
+                                            <li><a href="">আবেদনকারীগন</a></li>
+                                            <li><a href="">সনদ গ্রহন কারিগণ</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);" class="dropdown-toggle">
+                                            <span class="micon fa fa-file-text-o"></span><span class="mtext">একই নামের প্রত্যয়ন</span>
+                                        </a>
+                                        <ul class="submenu child">
+                                            <li><a href="">আবেদন করুন</a></li>
+                                            <li><a href="">আবেদনকারীগন</a></li>
+                                            <li><a href="">সনদ গ্রহন কারিগণ</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);" class="dropdown-toggle">
+                                            <span class="micon fa fa-file-text-o"></span><span class="mtext">বার্ষিক আয়ের সনদ</span>
+                                        </a>
+                                        <ul class="submenu child">
+                                            <li><a href="">আবেদন করুন</a></li>
+                                            <li><a href="">আবেদনকারীগন</a></li>
+                                            <li><a href="">সনদ গ্রহন কারিগণ</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);" class="dropdown-toggle">
+                                            <span class="micon fa fa-file-text-o"></span><span class="mtext">অনুমতি পত্র</span>
+                                        </a>
+                                        <ul class="submenu child">
+                                            <li><a href="">আবেদন করুন</a></li>
+                                            <li><a href="">আবেদনকারীগন</a></li>
+                                            <li><a href="">সনদ গ্রহন কারিগণ</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);" class="dropdown-toggle">
+                                            <span class="micon fa fa-file-text-o"></span><span class="mtext">নদী ভাঙনের সনদ</span>
+                                        </a>
+                                        <ul class="submenu child">
+                                            <li><a href="">আবেদন করুন</a></li>
+                                            <li><a href="">আবেদনকারীগন</a></li>
+                                            <li><a href="">সনদ গ্রহন কারিগণ</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);" class="dropdown-toggle">
+                                            <span class="micon fa fa-file-text-o"></span><span class="mtext">ভোটার আইডি স্থানান্তর</span>
+                                        </a>
+                                        <ul class="submenu child">
+                                            <li><a href="">আবেদন করুন</a></li>
+                                            <li><a href="">আবেদনকারীগন</a></li>
+                                            <li><a href="">সনদ গ্রহন কারিগণ</a></li>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
 
                     <li class="dropdown">
                         <a href="javascript:void(0);" class="dropdown-toggle">
-                            <span class="micon dw dw-certificate"></span><span class="mtext">ট্রেড লাইসেন্স ব্যবস্থাপনা</span>
-                        </a>
-                        <ul class="submenu">
-                            <li><a href="">আবেদন করুন</a></li>
-                            <li><a href=""> আবেদনকারিগন</a></li>
-                            <li><a href="">সনদ গ্রহন কারিগণ</a></li>
-
-                        </ul>
-                    </li>
-
-
-
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle">
-                            <span class="micon dw dw-user-1"></span><span class="mtext">ওয়ারিশ ব্যবস্থাপনা</span>
-                        </a>
-                        <ul class="submenu">
-                            <li><a href="">আবেদন করুন</a></li>
-                            <li><a href=""> আবেদনকারিগন</a></li>
-                            <li><a href="">সনদ গ্রহন কারিগণ</a></li>
-                        </ul>
-                    </li>
-
-
-
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle">
-                            <span class="micon fa fa-male"></span><span class="mtext">পারিবারিক ব্যবস্থাপনা</span>
-                        </a>
-                        <ul class="submenu">
-                            <li><a href="">আবেদন করুন</a></li>
-                            <li><a href=""> আবেদনকারিগন</a></li>
-                            <li><a href="">সনদ গ্রহন কারিগণ</a></li>
-                        </ul>
-                    </li>
-
-
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle">
-                            <span class="micon fa fa-list"></span><span class="mtext">অন্যান্য সনদ</span>
+                            <i class="micon fa fa-id-card-o" aria-hidden="true"></i><span class="mtext">ইউপি ভাতার তালিকা</span>
                         </a>
                         <ul class="submenu">
 
-
                             <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle">
-                                    <span class="micon fa fa-file-text-o"></span><span class="mtext">চারিত্রিক সনদ</span>
+                                <a href="" class="dropdown-toggle no-arrow">
+                                    <i class="micon fa fa-plus" aria-hidden="true"></i><span class="mtext">অ্যাড ইউপি ভাতার তালিকা</span>
                                 </a>
-                                <ul class="submenu child">
-                                    <li><a href="">আবেদন করুন</a></li>
-                                    <li><a href="">আবেদনকারীগন</a></li>
-                                    <li><a href="">সনদ গ্রহন কারিগণ</a></li>
-
-                                </ul>
                             </li>
 
                             <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle">
-                                    <span class="micon fa fa-file-text-o"></span><span class="mtext">মৃত্যু সনদ</span>
+                                <a href="" class="dropdown-toggle no-arrow">
+                                    <i class="icon-copy fa fa-hand-rock-o" aria-hidden="true"></i><span class="mtext">মুক্তিযোদ্ধাদের তালিকা</span>
                                 </a>
-                                <ul class="submenu child">
-                                    <li><a href="">আবেদন করুন</a></li>
-                                    <li><a href="">আবেদনকারীগন</a></li>
-                                    <li><a href="">সনদ গ্রহন কারিগণ</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle">
-                                    <span class="micon fa fa-file-text-o"></span><span class="mtext">অবিবাহিত সনদ</span>
-                                </a>
-                                <ul class="submenu child">
-                                    <li><a href="">আবেদন করুন</a></li>
-                                    <li><a href="">আবেদনকারীগন</a></li>
-                                    <li><a href="">সনদ গ্রহন কারিগণ</a></li>
-                                </ul>
-                            </li>
-
-
-                            <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle">
-                                    <span class="micon fa fa-file-text-o"></span><span class="mtext">বিবাহিত সনদ</span>
-                                </a>
-                                <ul class="submenu child">
-                                    <li><a href="">আবেদন করুন</a></li>
-                                    <li><a href="">আবেদনকারীগন</a></li>
-                                    <li><a href="">সনদ গ্রহন কারিগণ</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle">
-                                    <span class="micon fa fa-file-text-o"></span><span class="mtext">পুনঃ বিবাহ না হওয়া</span>
-                                </a>
-                                <ul class="submenu child">
-                                    <li><a href="">আবেদন করুন</a></li>
-                                    <li><a href="">আবেদনকারীগন</a></li>
-                                    <li><a href="">সনদ গ্রহন কারিগণ</a></li>
-                                </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle">
-                                    <span class="micon fa fa-file-text-o"></span><span class="mtext">সনাতন ধর্ম অবলম্বি</span>
+                                <a href="" class="dropdown-toggle no-arrow">
+                                    <i class="icon-copy fa fa-wheelchair" aria-hidden="true"></i><span class="mtext">দুস্থ ও হত দরিদ্রদের তালিকা</span>
                                 </a>
-                                <ul class="submenu child">
-                                    <li><a href="">আবেদন করুন</a></li>
-                                    <li><a href="">আবেদনকারীগন</a></li>
-                                    <li><a href="">সনদ গ্রহন কারিগণ</a></li>
-                                </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle">
-                                    <span class="micon fa fa-file-text-o"></span><span class="mtext">প্রত্যয়ন</span>
+                                <a href="" class="dropdown-toggle no-arrow">
+                                    <i class="icon-copy fa fa-blind" aria-hidden="true"></i><span class="mtext">বয়স্ক ভাতা প্রাপ্তদের তালিকা</span>
                                 </a>
-                                <ul class="submenu child">
-                                    <li><a href="">আবেদন করুন</a></li>
-                                    <li><a href="">আবেদনকারীগন</a></li>
-                                    <li><a href="">সনদ গ্রহন কারিগণ</a></li>
-                                </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle">
-                                    <span class="micon fa fa-file-text-o"></span><span class="mtext">ভূমিহীন সনদ</span>
+                                <a href="" class="dropdown-toggle no-arrow">
+                                    <i class="icon-copy fa fa-user-md" aria-hidden="true"></i><span class="mtext">মাতৃত্যকালিন ভাতার তালিকা</span>
                                 </a>
-                                <ul class="submenu child">
-                                    <li><a href="">আবেদন করুন</a></li>
-                                    <li><a href="">আবেদনকারীগন</a></li>
-                                    <li><a href="">সনদ গ্রহন কারিগণ</a></li>
-                                </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle">
-                                    <span class="micon fa fa-file-text-o"></span><span class="mtext">প্রকৃত বাকঁ ও শ্রবন প্রতিবন্ধী</span>
+                                <a href="" class="dropdown-toggle no-arrow">
+                                    <i class="icon-copy fa fa-signing" aria-hidden="true"></i><span class="mtext">বিধবা ভাতার তালিকা</span>
                                 </a>
-                                <ul class="submenu child">
-                                    <li><a href="">আবেদন করুন</a></li>
-                                    <li><a href="">আবেদনকারীগন</a></li>
-                                    <li><a href="">সনদ গ্রহন কারিগণ</a></li>
-                                </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle">
-                                    <span class="micon fa fa-file-text-o"></span><span class="mtext">একই নামের প্রত্যয়ন</span>
+                                <a href="" class="dropdown-toggle no-arrow">
+                                    <i class="icon-copy fa fa-wheelchair-alt" aria-hidden="true"></i><span class="mtext">প্রতিবন্ধী ভাতার তালিকা</span>
                                 </a>
-                                <ul class="submenu child">
-                                    <li><a href="">আবেদন করুন</a></li>
-                                    <li><a href="">আবেদনকারীগন</a></li>
-                                    <li><a href="">সনদ গ্রহন কারিগণ</a></li>
-                                </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle">
-                                    <span class="micon fa fa-file-text-o"></span><span class="mtext">বার্ষিক আয়ের সনদ</span>
+                                <a href="" class="dropdown-toggle no-arrow">
+                                    <i class="icon-copy fa fa-users" aria-hidden="true"></i><span class="mtext">ভি জি ডি ভাতার তালিকা</span>
                                 </a>
-                                <ul class="submenu child">
-                                    <li><a href="">আবেদন করুন</a></li>
-                                    <li><a href="">আবেদনকারীগন</a></li>
-                                    <li><a href="">সনদ গ্রহন কারিগণ</a></li>
-                                </ul>
                             </li>
-
-                            <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle">
-                                    <span class="micon fa fa-file-text-o"></span><span class="mtext">অনুমতি পত্র</span>
-                                </a>
-                                <ul class="submenu child">
-                                    <li><a href="">আবেদন করুন</a></li>
-                                    <li><a href="">আবেদনকারীগন</a></li>
-                                    <li><a href="">সনদ গ্রহন কারিগণ</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle">
-                                    <span class="micon fa fa-file-text-o"></span><span class="mtext">নদী ভাঙনের সনদ</span>
-                                </a>
-                                <ul class="submenu child">
-                                    <li><a href="">আবেদন করুন</a></li>
-                                    <li><a href="">আবেদনকারীগন</a></li>
-                                    <li><a href="">সনদ গ্রহন কারিগণ</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle">
-                                    <span class="micon fa fa-file-text-o"></span><span class="mtext">ভোটার আইডি স্থানান্তর</span>
-                                </a>
-                                <ul class="submenu child">
-                                    <li><a href="">আবেদন করুন</a></li>
-                                    <li><a href="">আবেদনকারীগন</a></li>
-                                    <li><a href="">সনদ গ্রহন কারিগণ</a></li>
-                                </ul>
-                            </li>
-
                         </ul>
                     </li>
+
                     <li>
-                        <a href="{{ route('admin.citizenRegistration') }}" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-add-user"></span><span class="mtext">বাণিজ্যিক রেজিস্ট্রেশন</span>
+                        <a href="" class="dropdown-toggle no-arrow">
+                            <i class="micon fa fa-file" aria-hidden="true"></i><span class="mtext">ইউপি রেজ্যুলেশান</span>
                         </a>
                     </li>
-                    @endrole
+
+                    <li>
+                        <a href="" class="dropdown-toggle no-arrow">
+                            <i class="micon fa fa-balance-scale" aria-hidden="true"></i><span class="mtext">মামলার নোটিশ</span>
+                        </a>
+                    </li>
+
                     <li>
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
                         <div class="sidebar-small-cap">সেটিং</div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle">
+                            <span class="micon fa fa-desktop"></span><span class="mtext">ওয়েবসাইট ম্যানেজমেন্ট</span>
+                        </a>
+                        <ul class="submenu">
+                            <li class="dropdown">
+                                <a href="" class="dropdown-toggle no-arrow">
+                                    <i class="micon fa fa-user-circle-o" aria-hidden="true"></i><span class="mtext"> ইউপি কর্মকর্তা-কর্মচারী</span>
+                                </a>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="{{ route('union.committee') }}" class="dropdown-toggle no-arrow">
+                                    <i class="micon fa fa-file" aria-hidden="true"></i><span class="mtext">স্থায়ী কমিটি</span>
+                                </a>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="{{ route('union.slider') }}" class="dropdown-toggle no-arrow">
+                                    <i class="micon fa fa-image" aria-hidden="true"></i><span class="mtext">ইউপি স্লাইডার</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="{{ route('union.unionProfile') }}" class="dropdown-toggle no-arrow">
@@ -341,6 +433,8 @@
                             <i class="micon fa fa-cogs" aria-hidden="true"></i><span class="mtext">রোল সেটআপ</span>
                         </a>
                     </li>
+
+                    @endrole
             </ul>
         </div>
     </div>

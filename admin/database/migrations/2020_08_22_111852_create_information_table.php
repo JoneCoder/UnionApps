@@ -41,7 +41,6 @@ class CreateInformationTable extends Migration
             $table->text('map', 300);
             $table->boolean('status')->default(true);
             $table->integer('created_by', 10);
-            $table->integer('created_by', 10);
             $table->integer('updated_by', 10);
             $table->string('created_by_ip', 20);
             $table->string('updated_by_ip', 20);

@@ -10,7 +10,7 @@
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <title>@guest ডিজিটালাইজ ইউনিয়ন পরিষদ @else @role('Super Admin')ডিজিটালাইজ ইউনিয়ন পরিষদ অ্যাডমিন @else ডিজিটালাইজ ইউনিয়ন পরিষদ @endrole @endguest @yield('title')</title>
+    <title>@guest ডিজিটালাইজ ইউনিয়ন পরিষদ @else @role('Super Admin')ডিজিটালাইজ ইউনিয়ন পরিষদ অ্যাডমিন @else {{ Auth::User()->union->bn_name }} @endrole @endguest @yield('title')</title>
 
     <!-- Site favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/favicon/apple-touch-icon.png') }}">

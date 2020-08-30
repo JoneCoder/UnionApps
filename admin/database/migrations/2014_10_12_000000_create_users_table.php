@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->integer('pin')->unsigned();
             $table->string('options', 5);
             $table->string('username', 20)->unique();
-            $table->integer('union_code')->unsigned();
+            $table->integer('union_code')->unsigned()->unique();
             $table->string('password');
             $table->rememberToken();
             $table->softDeletes();
