@@ -15,6 +15,20 @@ class CreateResolutionsTable extends Migration
     {
         Schema::create('resolutions', function (Blueprint $table) {
             $table->id();
+            $table->integer('union_code')->unsigned()->unique();
+            $table->integer('committee_id')->unsigned()->default(0);
+            $table->string('subject', 100);
+            $table->string('Place', 100);
+            $table->string('moderator', 100);
+            $table->text('present_members');
+            $table->text('decision');
+            $table->string('document', 100);
+            $table->date('date');
+            $table->integer('created_by');
+            $table->integer('updated_by')->nullable();
+            $table->string('created_by_ip', 20);
+            $table->string('updated_by_ip', 20)->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

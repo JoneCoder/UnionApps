@@ -90,4 +90,18 @@ Route::group(['prefix' => '/union', 'middleware' => ['auth']], function (){
         'uses'  => 'Settings\Union\UnionCommitteeController@index',
         'as'    => 'union.committee'
     ]);
+    Route::post('/committee', [
+        'uses'  => 'Settings\Union\UnionCommitteeController@storeCommittee',
+        'as'    => 'union.addCommittee'
+    ]);
+    Route::post('/committee/member', [
+        'uses'  => 'Settings\Union\UnionCommitteeController@storeCommitteeMember',
+        'as'    => 'union.addCommitteeMember'
+    ]);
+    Route::post('/committee/members/list', [
+        'uses'  => 'Settings\Union\UnionCommitteeController@committeeMembersList'
+    ]);
+    Route::post('/committee/list', [
+        'uses'  => 'Settings\Union\UnionCommitteeController@committeeList'
+    ]);
 });

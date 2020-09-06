@@ -3,7 +3,7 @@ const mix = require('laravel-mix');
 //style css
 mix.styles([
     'resources/assets/vendors/styles/style.css'
-], 'public/css/style.css',);
+], 'public/css/style.css');
 
 //QR Scanner js
 mix.scripts([
